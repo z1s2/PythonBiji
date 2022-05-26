@@ -1,0 +1,71 @@
+一、标题
+python pytest 测试实战
+
+二、课程价值
+掌握 pytest fixture 用法
+掌握 pytest 常用插件
+掌握 allure
+
+三、大纲
+pytest fixture 高级用法
+conftest.py 用法
+pytest 配置
+pytest 常用插件
+allure 生成测试报告
+时长
+120分钟
+
+
+四、参考资料：
+
+allure 下载： https://repo1.maven.org/maven2/io/qameta/allure/allure-commandline/2.13.7/ 32
+fixture
+调用方式
+测试用例中传入 fixture 方法名
+@pytest.mark.usefixtures("login")
+自动调用：@pytest.fixture(autouse=True)
+作用域
+控制方法：@pytest.fixture(scope='')
+scope 的取值
+function
+class
+module
+session
+fixture 方法返回值的获取
+在测试用例中使用 fixture 方法名就可以获取到 yield 后面的返回值
+pytest 配置
+写在 pytest.ini 文件中
+放在项目工程的根目录
+不能用任何中文符号
+[pytest]
+markers  自定义 mark 标签名
+addopts   运行时参数（可添加多个命令行参数，空格分隔，所有参数与命令行一致）
+python_files  自定义测试文件命名规则
+python_classes = Test_*   自定义测试类命名规则
+python_functions= test_* check_*    自定义测试方法命名规则
+testpaths = bilibili baidu    指定特定路径运行
+norecursedirs = result logs datas test_demo*   运行时忽略某些文件夹
+
+五、插件
+pytest-rerunfailures
+pytest test_rerun.py --reruns 3 --reruns-delay 1
+xdist
+pytest test_ordering.py -n 3
+allure
+生成 allure 测试结果：pytest --alluredir=./result
+展示报告：allure serve ./result
+生成最终版本的报告：allure generate ./result
+清除上一次的记录：allure generate --clean result -o result/html
+
+六、课后作业
+补全计算器（加减乘除）的测试用例，编写用例顺序：加-除-减-乘
+创建 fixture 方法实现执行测试用例前打印【开始计算】，执行测试用例之后打印【计算结束】
+将 fixture 方法存放在 conftest.py ，设置 scope=module
+控制测试用例顺序按照【加-减-乘-除】这个顺序执行
+结合 allure 生成本地测试报告
+
+
+
+
+
+
